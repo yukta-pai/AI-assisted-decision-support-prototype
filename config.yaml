@@ -1,0 +1,72 @@
+app:
+  title: "AI Decision Support Dashboard"
+  subtitle: "From Reporting to Action"
+  version: "2.0"
+
+kpis:
+  primary:
+    - name: revenue
+      label: "Gross Revenue"
+      format: "currency"
+      alert_threshold: -0.08
+    - name: net_revenue
+      label: "Net Revenue"
+      format: "currency"
+      alert_threshold: -0.08
+    - name: traffic
+      label: "Traffic"
+      format: "number"
+      alert_threshold: -0.10
+    - name: conversion_rate
+      label: "Conversion Rate"
+      format: "percent"
+      alert_threshold: -0.05
+    - name: avg_order_value
+      label: "Avg Order Value"
+      format: "currency"
+      alert_threshold: -0.05
+    - name: gross_margin
+      label: "Gross Margin"
+      format: "currency"
+      alert_threshold: -0.10
+    - name: return_rate
+      label: "Return Rate"
+      format: "percent"
+      alert_threshold: 0.03
+    - name: marketing_spend
+      label: "Marketing Spend"
+      format: "currency"
+      alert_threshold: 0.15
+
+driver_weights:
+  revenue:
+    traffic: 0.35
+    conversion_rate: 0.30
+    avg_order_value: 0.20
+    return_rate: 0.15
+  gross_margin:
+    net_revenue: 0.40
+    return_rate: 0.25
+    marketing_spend: 0.20
+    margin_pct: 0.15
+
+regions:
+  - "North America"
+  - "Europe"
+  - "Asia Pacific"
+  - "Latin America"
+
+categories:
+  - "Electronics"
+  - "Apparel"
+  - "Home & Garden"
+  - "Health & Beauty"
+  - "Sports & Outdoors"
+
+anomaly:
+  zscore_threshold: 2.0
+  rolling_window: 4
+
+llm:
+  model: "claude-sonnet-4-20250514"
+  max_tokens: 600
