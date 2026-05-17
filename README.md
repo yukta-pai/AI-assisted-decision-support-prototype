@@ -222,10 +222,4 @@ python -m pytest tests/ -v
 
 ---
 
-## CV / LinkedIn Summary
-
-> Built an AI-assisted decision-support prototype in Python and Streamlit to detect KPI issues, rank likely performance drivers, simulate business scenarios, and generate management-ready action summaries using the Anthropic Claude API.
-
----
-
 *Prototype built for portfolio demonstration. Data is synthetic. All formula relationships and assumptions are documented.*
