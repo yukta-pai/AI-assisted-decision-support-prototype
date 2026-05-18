@@ -24,40 +24,40 @@ The AI component (executive summary) sits on top of *structured, pre-computed ou
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                    Streamlit UI (app/)                   │
+│                    Streamlit UI (app/)                  │
 │         Filters · Cards · Charts · Sliders · Summary    │
 └──────────────────────────┬──────────────────────────────┘
                            │
           ┌────────────────▼────────────────┐
-          │        Decision Engine (src/)    │
-          │                                  │
-          │  Layer 1: KPI Monitoring         │
-          │  · Period-over-period comparison │
-          │  · Alert threshold flagging      │
-          │                                  │
-          │  Layer 2: Driver Attribution     │
-          │  · Metric dependency map         │
-          │  · Weighted relevance scoring    │
-          │  · Ranked driver output          │
-          │                                  │
-          │  Layer 3: Scenario Simulation    │
-          │  · Deterministic formula engine  │
-          │  · 6 adjustable levers           │
-          │  · Full downstream recomputation │
-          │                                  │
-          │  Layer 4: Recommendation Engine  │
+          │        Decision Engine (src/)   │
+          │                                 │
+          │  Layer 1: KPI Monitoring        │
+          │  · Period-over-period comparison│
+          │  · Alert threshold flagging     │
+          │                                 │
+          │  Layer 2: Driver Attribution    │
+          │  · Metric dependency map        │
+          │  · Weighted relevance scoring   │
+          │  · Ranked driver output         │
+          │                                 │
+          │  Layer 3: Scenario Simulation   │
+          │  · Deterministic formula engine │
+          │  · 6 adjustable levers          │
+          │  · Full downstream recomputation│
+          │                                 │
+          │  Layer 4: Recommendation Engine │
           │  · Pattern-matched action library│
-          │  · Priority matrix (impact ×     │
-          │    urgency × confidence)         │
+          │  · Priority matrix (impact ×    │
+          │    urgency × confidence)        │
           └────────────────┬────────────────┘
                            │
           ┌────────────────▼────────────────┐
-          │      AI Summary Layer           │
-          │   Anthropic Claude API          │
-          │   Grounded prompt from          │
-          │   structured engine outputs     │
-          │   Rule-based fallback if        │
-          │   no API key provided           │
+          │        AI Summary Layer         │
+          │      Anthropic Claude API       │
+          │      Grounded prompt from       │
+          │     structured engine outputs   │
+          │      Rule-based fallback if     │
+          │       no API key provided       │
           └─────────────────────────────────┘
 ```
 
@@ -203,7 +203,7 @@ python -m pytest tests/ -v
 
 ## Design Decisions
 
-**Why deterministic simulation, not ML?** The scenario engine uses explicit formulas rather than a regression model. This makes outputs auditable — a business user can trace exactly why projected revenue changed. A black-box model would undermine trust in a decision-support context.
+**Why deterministic simulation, not ML?** The scenario engine uses explicit formulas rather than a regression model. This makes outputs auditable, a business user can trace exactly why projected revenue changed. A black-box model would undermine trust in a decision-support context.
 
 **Why structured prompt for the LLM?** The AI layer receives pre-computed numbers and rankings. It cannot invent figures. This is the correct separation: engine computes, model communicates. It also makes the summary consistent with what the charts show.
 
